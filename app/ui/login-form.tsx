@@ -8,8 +8,11 @@ import {
 } from '@heroicons/react/24/outline';
 import { ArrowRightIcon } from '@heroicons/react/20/solid';
 import { Button } from './button';
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm() {
+  const router = useRouter()
+
   return (
     <form className="space-y-3">
       <div className="flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8">
@@ -57,16 +60,27 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
-        <LoginButton />
+        <Button onClick={() => router.push('/dashboard')} className="mt-4 w-full">
+          Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+        </Button>
       </div>
     </form>
   );
 }
 
-function LoginButton() {
-  return (
-    <Button className="mt-4 w-full">
-      Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
-    </Button>
-  );
-}
+
+
+// function LoginButton() {
+//   const router = useRouter();
+
+//   const gotoDashboard =function(){
+//     console.log("123123")
+//     router.push('/dashboard')
+//   }
+
+//   return (
+//     <Button onClick={gotoDashboard()} className="mt-4 w-full">
+//       Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
+//     </Button>
+//   );
+// }
